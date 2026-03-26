@@ -68,7 +68,7 @@ style: |
 
 ## Theme
 
-`dracula-marp.css` follows the same color palette as [javiersempere.com](jsempereh.github.io):
+`dracula-marp.css` follows the same color palette as [my web](https://jsempereh.github.io/):
 
 | Token | Color | Usage |
 |---|---|---|
