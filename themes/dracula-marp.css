@@ -1,0 +1,244 @@
+/* @theme dracula-javi */
+
+/* Re-import only base — not default — so MARP knows slide dimensions */
+@import 'base';
+
+/* Override everything base sets that clashes with our theme */
+
+:root {
+  --bg:          #18181a;
+  --fg:          #f8f8f2;
+  --fg2:         #bfbfbf;
+  --purple:      #bd93f9;
+  --purple-dark: #6e48aa;
+  --cyan:        #8be9fd;
+  --green:       #50fa7b;
+  --orange:      #ffb86c;
+  --pink:        #ff79c6;
+  --red:         #ff5555;
+  --yellow:      #f1fa8c;
+  --card:        #22222a;
+  --border:      #282a36;
+}
+
+/* ── Reset / Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Fill the viewer — removes side margins in exported HTML ── */
+@media screen {
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #18181a !important;
+  }
+  marpit svg[id] {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Fira Code', 'Fira Mono', monospace;
+  font-size: 28px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  padding: 52px 64px;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* ── Headings ── */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 16px 0;
+  font-weight: bold;
+}
+h1 {
+  color: var(--purple);
+  font-size: 1.6em;
+  letter-spacing: -1px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+h2 {
+  color: var(--purple);
+  font-size: 1.3em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+h3 { color: var(--cyan);   font-size: 1.05em; }
+h4 { color: var(--orange); font-size: 1em; }
+
+/* ── Body text ── */
+p  { margin: 0 0 12px 0; color: var(--fg); }
+li { color: var(--fg); margin-bottom: 6px; }
+strong { color: var(--purple); }
+em     { color: var(--cyan); font-style: italic; }
+a      { color: var(--purple); text-decoration: none; border-bottom: 1px dotted var(--purple-dark); }
+
+/* ── Lists ── */
+ul, ol { padding-left: 1.3em; margin: 6px 0 12px 0; }
+ul li::marker { color: var(--purple); }
+ol li::marker { color: var(--cyan); }
+
+/* ── Inline code ── */
+code {
+  background: #282a36;
+  color: var(--fg);
+  font-family: 'Fira Code', 'Fira Mono', monospace;
+  font-size: 0.82em;
+  padding: 2px 7px;
+  border-radius: 5px;
+  border: 1px solid #44475a;
+}
+
+/* ── Code blocks ── */
+pre {
+  background: #282a36 !important;
+  border: 1.5px solid #44475a;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 12px 0;
+  overflow: hidden;
+}
+pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 0.72em;
+  line-height: 1.65;
+  color: var(--fg) !important;
+  display: block;
+}
+
+/* ── Dracula syntax tokens (highlight.js class names) ── */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag              { color: #ff79c6; }   /* pink   — import, for, if, return  */
+
+.hljs-string,
+.hljs-attr,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition         { color: #f1fa8c; }   /* yellow — strings                  */
+
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-function > .hljs-keyword { color: #50fa7b; } /* green — def, function names */
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title { color: #8be9fd; }  /* cyan   — variables, class names   */
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion         { color: #6272a4; font-style: italic; } /* muted — comments */
+
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-type,
+.hljs-link             { color: #bd93f9; }   /* purple — numbers, booleans        */
+
+.hljs-meta,
+.hljs-params           { color: #ffb86c; }   /* orange — decorators, params       */
+
+.hljs-emphasis { font-style: italic; }
+.hljs-strong   { font-weight: bold;  }
+
+/* ── Blockquote ── */
+blockquote {
+  border-left: 3px solid var(--purple);
+  background: var(--card);
+  margin: 14px 0;
+  padding: 10px 20px;
+  border-radius: 0 8px 8px 0;
+}
+blockquote p { color: var(--fg2); margin: 0; }
+
+/* ── Tables — all dark, no white rows ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78em;
+  margin: 14px 0;
+  background: transparent;
+}
+thead tr { background: var(--card); }
+th {
+  background: var(--card);
+  color: var(--purple);
+  padding: 8px 16px;
+  border: 1px solid #44475a;
+  text-align: left;
+  font-weight: bold;
+}
+td {
+  padding: 7px 16px;
+  border: 1px solid var(--border);
+  color: var(--fg);
+}
+tbody tr:nth-child(odd)  td { background: #1c1c1f; }
+tbody tr:nth-child(even) td { background: #222228; }
+tbody tr:hover td { background: #2a2a34; }
+
+/* ── Header / Footer ── */
+header, footer {
+  color: var(--fg2);
+  font-size: 0.5em;
+  font-family: 'Fira Code', 'Fira Mono', monospace;
+}
+header { top: 18px;    left: 64px; }
+footer { bottom: 18px; right: 64px; }
+
+/* ── Slide number ── */
+section::after {
+  color: var(--fg2);
+  font-size: 0.45em;
+  font-family: 'Fira Code', 'Fira Mono', monospace;
+}
+
+/* ── Title slide ── */
+section.title {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+section.title h1 {
+  font-size: 2em;
+  border: none;
+  padding: 0;
+  margin-bottom: 18px;
+  letter-spacing: -2px;
+}
+section.title p { color: var(--fg2); font-size: 0.85em; }
+
+/* ── Split layout ── */
+section.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+section.split h1,
+section.split h2 { grid-column: 1 / -1; }
+
+/* ── Highlight boxes ── */
+.box {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 10px 0;
+}
+.box-purple { border-color: var(--purple); }
+.box-cyan   { border-color: var(--cyan);   }
+.box-green  { border-color: var(--green);  }
