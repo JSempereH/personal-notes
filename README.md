@@ -15,8 +15,6 @@ npx @marp-team/marp-cli@latest example/example.md \
   -o example/example.html
 ```
 
-Then copy the generated HTML into your website under `assets/slides/`.
-
 ### Options
 
 | Flag | Purpose |
